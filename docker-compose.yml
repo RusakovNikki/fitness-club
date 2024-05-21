@@ -1,0 +1,10 @@
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: fitness-club
+      POSTGRES_PASSWORD: fitness-club
+      POSTGRES_DATABASE: fitness-club
+    ports:
+      - "5432:5432"

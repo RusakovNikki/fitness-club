@@ -1,9 +1,14 @@
 package ru.api.fitnessclub.models;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -44,8 +49,19 @@ public class UserModel extends BaseModel {
     @Column(name = "password")
     private String password;
 
-    /*
-     * Связь многие к одному
-     */
-    // private Long subscription_id;
+    @ManyToOne
+    @JoinColumn(name = "subscription_id", referencedColumnName = "id")
+    private SubscriptionModel subscription;
+
+    @OneToMany(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "user_id")
+    private List<InventoryModel> inventoryList;
+
+    @OneToMany(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "user_id")
+    private List<TrainingModel> userTraining;
+
+    @OneToMany(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "trainer_id")
+    private List<TrainingModel> trainerTraining;
 }

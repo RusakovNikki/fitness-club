@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -29,8 +31,7 @@ public class InventoryModel extends BaseModel {
     @Column(name = "return_at")
     private LocalDateTime returnAt;
 
-    /*
-     * Связь многие к одному
-     */
-    // private Long user_id;
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private UserModel user;
 }

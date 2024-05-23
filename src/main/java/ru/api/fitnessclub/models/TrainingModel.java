@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -23,9 +25,11 @@ public class TrainingModel extends BaseModel {
     @Column(name = "type")
     private String type;
 
-    /*
-     * Связь многие ко многим у таблице users - users
-     */
-    // private Long user_id;
-    // private Long trainer_id;
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private UserModel user;
+
+    @ManyToOne
+    @JoinColumn(name = "trainer_id", referencedColumnName = "id")
+    private UserModel trainer;
 }

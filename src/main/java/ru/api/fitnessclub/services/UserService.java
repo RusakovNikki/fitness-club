@@ -2,7 +2,6 @@ package ru.api.fitnessclub.services;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lombok.AllArgsConstructor;
@@ -20,5 +19,9 @@ public class UserService {
 
     public void createUser(UserModel user) {
         userRepository.save(user);
+    }
+
+    public List<UserModel> getUsersByName(String name) {
+        return userRepository.findAllByName(name);
     }
 }

@@ -31,4 +31,11 @@ public class InventoryService {
         inventory.setUser(user);
         return inventoryRepository.save(inventory);
     }
+
+    public InventoryModel removeUserFromInventory(Long inventoryId) {
+        InventoryModel inventory = inventoryRepository.findById(inventoryId).orElseThrow();
+        inventory.setUser(null);
+
+        return inventoryRepository.save(inventory);
+    }
 }

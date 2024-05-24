@@ -38,4 +38,11 @@ public class InventoryController {
 
         return inventory;
     }
+
+    @PutMapping("/inventory/{inventoryId}/remove-user")
+    public InventoryModel removeUserFromInventory(@PathVariable Long inventoryId) {
+        InventoryModel inventory = inventoryService.removeUserFromInventory(inventoryId);
+
+        return inventory;
+    }
 }

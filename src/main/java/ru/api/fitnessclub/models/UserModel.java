@@ -54,7 +54,7 @@ public class UserModel extends BaseModel {
     private SubscriptionModel subscription;
 
     @OneToMany(cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "inventory_id")
     private List<InventoryModel> inventoryList;
 
     @OneToMany(cascade = CascadeType.REMOVE)

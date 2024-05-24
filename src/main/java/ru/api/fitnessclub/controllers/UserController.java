@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import ru.api.fitnessclub.models.UserModel;
@@ -38,6 +40,13 @@ public class UserController {
     @GetMapping("/users/search/{name}")
     public List<UserModel> getUsersByName(@PathVariable String name) {
         return userService.getUsersByName(name);
+    }
+
+    @PutMapping("/users/{userId}/update-status")
+    public UserModel userEntranceRegistration(@PathVariable Long userId,
+            @RequestParam String status) {
+
+        return userService.updateUserStatus(userId, status);
     }
 
 }

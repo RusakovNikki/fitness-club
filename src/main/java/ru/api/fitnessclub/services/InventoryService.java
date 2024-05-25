@@ -25,11 +25,13 @@ public class InventoryService {
     }
 
     public InventoryModel assignUserToInventory(Long inventoryId, Long userId) {
-        InventoryModel inventory = inventoryRepository.findById(inventoryId).orElseThrow();
-        UserModel user = userRepository.findById(userId).orElseThrow();
-
-        inventory.setUser(user);
-        return inventoryRepository.save(inventory);
+        InventoryModel inventory = inventoryRepository.findById(inventoryId).orElse(null);
+        UserModel user = userRepository.findById(userId).orElse(null);
+        if (user != null && inventory != null) {
+            inventory.setUser(user);
+            return inventoryRepository.save(inventory);
+        }
+        return null;
     }
 
     public InventoryModel removeUserFromInventory(Long inventoryId) {

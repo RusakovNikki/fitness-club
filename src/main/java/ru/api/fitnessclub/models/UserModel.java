@@ -3,6 +3,7 @@ package ru.api.fitnessclub.models;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
@@ -52,6 +53,7 @@ public class UserModel extends BaseModel {
     private String password;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "subscription_id", referencedColumnName = "id")
     private SubscriptionModel subscription;
 

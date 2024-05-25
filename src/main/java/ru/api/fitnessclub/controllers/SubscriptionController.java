@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.github.javafaker.Bool;
-
 import ru.api.fitnessclub.models.SubscriptionModel;
 import ru.api.fitnessclub.services.SubscriptionService;
 

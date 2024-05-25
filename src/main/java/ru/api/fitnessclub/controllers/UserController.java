@@ -49,4 +49,9 @@ public class UserController {
         return userService.updateUserStatus(userId, status);
     }
 
+    @PutMapping("/users/{userId}/add-subscription")
+    public UserModel addSubscriptionToUser(@PathVariable Long userId, @RequestParam Long subscriptionId) {
+        return userService.addSubscriptionToUser(userId, subscriptionId);
+    }
+
 }

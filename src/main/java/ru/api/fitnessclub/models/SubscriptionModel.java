@@ -2,6 +2,8 @@ package ru.api.fitnessclub.models;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -28,5 +30,6 @@ public class SubscriptionModel extends BaseModel {
 
     @OneToMany(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "subscription_id")
+    @JsonManagedReference
     private List<UserModel> userList;
 }

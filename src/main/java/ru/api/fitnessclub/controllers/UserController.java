@@ -26,32 +26,48 @@ public class UserController {
         return "Hello world!";
     }
 
+    // TMP
+    @GetMapping("/secured")
+    public String secured() {
+        return "secured!";
+    }
+
+    @GetMapping("/admin")
+    public String admin() {
+        return "admin!";
+    }
+    //
+
     @GetMapping("/users")
     public List<UserModel> getUsers() {
-        return userService.getUsers();
+        // return userService.getUsers();
+        return null;
     }
 
     @PostMapping("/users")
     public String createUser(@RequestBody UserModel user) {
-        userService.createUser(user);
+        // userService.createUser(user);
         return "Success!";
     }
 
     @GetMapping("/users/search/{name}")
     public List<UserModel> getUsersByName(@PathVariable String name) {
-        return userService.getUsersByName(name);
+        // return userService.getUsersByName(name);
+        return null;
     }
 
     @PutMapping("/users/{userId}/update-status")
     public UserModel userEntranceRegistration(@PathVariable Long userId,
             @RequestParam String status) {
 
-        return userService.updateUserStatus(userId, status);
+        // return userService.updateUserStatus(userId, status);
+        return null;
     }
 
     @PutMapping("/users/{userId}/add-subscription")
     public UserModel addSubscriptionToUser(@PathVariable Long userId, @RequestParam Long subscriptionId) {
-        return userService.addSubscriptionToUser(userId, subscriptionId);
+        // return userService.addSubscriptionToUser(userId, subscriptionId);
+        return null;
     }
 
 }

@@ -1,6 +1,7 @@
 package ru.api.fitnessclub.models;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -46,9 +47,9 @@ public class UserModel {
 
     private String password;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<ERole> roles = new HashSet<>();
+    private Collection<RoleModel> roles;
 
     // в видео добавляли конструктор без параметров, с параметрами определенными,
     // геттеры, сеттеры

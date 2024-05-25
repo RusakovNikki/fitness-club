@@ -30,30 +30,32 @@ public class UserService {
     }
 
     public UserModel updateUserStatus(Long userId, String status) {
-        UserModel user = userRepository.findById(userId).orElseThrow();
+        // UserModel user = userRepository.findById(userId).orElseThrow();
 
-        if (status.equalsIgnoreCase("ENTER")) {
-            user.setEnteredAt(LocalDateTime.now());
-            user.setLeftAt(null);
-        } else if (status.equalsIgnoreCase("LEFT")) {
-            user.setEnteredAt(null);
-            user.setLeftAt(LocalDateTime.now());
-        }
+        // if (status.equalsIgnoreCase("ENTER")) {
+        // user.setEnteredAt(LocalDateTime.now());
+        // user.setLeftAt(null);
+        // } else if (status.equalsIgnoreCase("LEFT")) {
+        // user.setEnteredAt(null);
+        // user.setLeftAt(LocalDateTime.now());
+        // }
 
-        user.setStatus(status);
-        return userRepository.save(user);
+        // user.setStatus(status);
+        // return userRepository.save(user);
+        return null;
     }
 
     public UserModel addSubscriptionToUser(Long userId, Long subId) {
-        SubscriptionModel subscription = subscriptionRepository.findById(subId).orElse(null);
-        UserModel user = userRepository.findById(userId).orElse(null);
+        // SubscriptionModel subscription =
+        // subscriptionRepository.findById(subId).orElse(null);
+        // UserModel user = userRepository.findById(userId).orElse(null);
 
-        if (user != null && subscription != null) {
-            // inventory.setUser(user);
-            // return inventoryRepository.save(inventory);
-            user.setSubscription(subscription);
-            return userRepository.save(user);
-        }
+        // if (user != null && subscription != null) {
+        // // inventory.setUser(user);
+        // // return inventoryRepository.save(inventory);
+        // user.setSubscription(subscription);
+        // return userRepository.save(user);
+        // }
 
         return null;
     }

@@ -25,6 +25,9 @@ public class TrainingModel extends BaseModel {
     @Column(name = "type")
     private String type;
 
+    @Column(name = "name")
+    private String name;
+
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private UserModel user;

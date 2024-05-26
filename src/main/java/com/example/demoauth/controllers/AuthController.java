@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demoauth.configs.jwt.JwtUtils;
 import com.example.demoauth.models.ERole;
-import com.example.demoauth.models.Role;
+import com.example.demoauth.models.RoleModel;
 import com.example.demoauth.models.UserModel;
 import com.example.demoauth.pojo.JwtResponse;
 import com.example.demoauth.pojo.LoginRequest;
@@ -93,10 +93,10 @@ public class AuthController {
 				passwordEncoder.encode(signupRequest.getPassword()));
 
 		Set<String> reqRoles = signupRequest.getRoles();
-		Set<Role> roles = new HashSet<>();
+		Set<RoleModel> roles = new HashSet<>();
 
 		if (reqRoles == null) {
-			Role userRole = roleRepository
+			RoleModel userRole = roleRepository
 					.findByName(ERole.ROLE_USER)
 					.orElseThrow(() -> new RuntimeException("Error, Role USER is not found"));
 			roles.add(userRole);
@@ -104,14 +104,14 @@ public class AuthController {
 			reqRoles.forEach(r -> {
 				switch (r) {
 					case "admin":
-						Role adminRole = roleRepository
+						RoleModel adminRole = roleRepository
 								.findByName(ERole.ROLE_ADMIN)
 								.orElseThrow(() -> new RuntimeException("Error, Role ADMIN is not found"));
 						roles.add(adminRole);
 
 						break;
 					case "trainer":
-						Role modRole = roleRepository
+						RoleModel modRole = roleRepository
 								.findByName(ERole.ROLE_TRAINER)
 								.orElseThrow(() -> new RuntimeException("Error, Role TRAINER is not found"));
 						roles.add(modRole);
@@ -119,7 +119,7 @@ public class AuthController {
 						break;
 
 					default:
-						Role userRole = roleRepository
+						RoleModel userRole = roleRepository
 								.findByName(ERole.ROLE_USER)
 								.orElseThrow(() -> new RuntimeException("Error, Role USER is not found"));
 						roles.add(userRole);

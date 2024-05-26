@@ -80,7 +80,7 @@ public class UserModel {
 
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-	private Set<Role> roles = new HashSet<>();
+	private Set<RoleModel> roles = new HashSet<>();
 
 	public UserModel(String username, String email, String password) {
 		this.username = username;

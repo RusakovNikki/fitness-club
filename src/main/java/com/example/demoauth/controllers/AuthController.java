@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demoauth.configs.jwt.JwtUtils;
 import com.example.demoauth.models.ERole;
 import com.example.demoauth.models.Role;
-import com.example.demoauth.models.User;
+import com.example.demoauth.models.UserModel;
 import com.example.demoauth.pojo.JwtResponse;
 import com.example.demoauth.pojo.LoginRequest;
 import com.example.demoauth.pojo.MessageResponse;
@@ -88,7 +88,7 @@ public class AuthController {
 					.body(new MessageResponse("Error: Email is exist"));
 		}
 
-		User user = new User(signupRequest.getUsername(),
+		UserModel user = new UserModel(signupRequest.getUsername(),
 				signupRequest.getEmail(),
 				passwordEncoder.encode(signupRequest.getPassword()));
 

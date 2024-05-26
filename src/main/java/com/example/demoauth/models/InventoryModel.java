@@ -41,5 +41,5 @@ public class InventoryModel {
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     @JsonBackReference
-    private User user;
+    private UserModel user;
 }

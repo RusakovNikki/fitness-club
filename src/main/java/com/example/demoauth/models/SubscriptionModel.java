@@ -35,5 +35,5 @@ public class SubscriptionModel {
     @OneToMany(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "subscription_id")
     @JsonManagedReference
-    private List<User> userList;
+    private List<UserModel> userList;
 }

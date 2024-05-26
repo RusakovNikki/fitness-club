@@ -35,9 +35,9 @@ public class TrainingModel {
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private User user;
+    private UserModel user;
 
     @ManyToOne
     @JoinColumn(name = "trainer_id", referencedColumnName = "id")
-    private User trainer;
+    private UserModel trainer;
 }

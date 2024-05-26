@@ -3,6 +3,7 @@ package com.example.demoauth.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,16 +21,19 @@ public class SubscriptionController {
     @Autowired
     private SubscriptionService subscriptionService;
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/subscriptions")
     public List<SubscriptionModel> getAllSubscriptions() {
         return subscriptionService.getAllSubscriptions();
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/subscriptions")
     public SubscriptionModel createSubscription(@RequestBody SubscriptionModel subscription) {
         return subscriptionService.createSubscription(subscription);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @DeleteMapping("/subscriptions/{subscriptionId}")
     public Boolean deleteSubscriptionById(@PathVariable Long subscriptionId) {
         subscriptionService.deleteSubscriptionById(subscriptionId);

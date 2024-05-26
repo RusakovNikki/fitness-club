@@ -50,6 +50,7 @@ public class UserController {
 
     @CrossOrigin(origins = "http://localhost:3000")
     @PutMapping("/users/{userId}/add-subscription")
+    @PreAuthorize("hasRole('USER')")
     public UserModel addSubscriptionToUser(@PathVariable Long userId, @RequestParam Long subscriptionId) {
         return userService.addSubscriptionToUser(userId, subscriptionId);
     }

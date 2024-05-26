@@ -15,19 +15,19 @@ public class TestController {
 	public String allAccess() {
 		return "public API";
 	}
-	
+
 	@GetMapping("/user")
-	@PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+	@PreAuthorize("hasRole('USER') or hasRole('TRAINER') or hasRole('ADMIN')")
 	public String userAccess() {
 		return "user API";
 	}
-	
-	@GetMapping("/mod")
-	@PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
-	public String moderatorAccess() {
-		return "moderator API";
+
+	@GetMapping("/trainer")
+	@PreAuthorize("hasRole('TRAINER') or hasRole('ADMIN')")
+	public String trainerAccess() {
+		return "trainer API";
 	}
-	
+
 	@GetMapping("/admin")
 	@PreAuthorize("hasRole('ADMIN')")
 	public String adminAccess() {

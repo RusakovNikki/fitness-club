@@ -53,6 +53,12 @@ public class UserModel {
 	@Column(name = "left_at")
 	private LocalDateTime leftAt;
 
+	@Column(name = "first_name")
+	private String firstName;
+
+	@Column(name = "last_name")
+	private String lastName;
+
 	/*
 	 * статус - "ПРИШЕЛ/УШЕЛ"
 	 */

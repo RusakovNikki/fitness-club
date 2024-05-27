@@ -20,6 +20,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Getter;
@@ -66,12 +67,11 @@ public class UserModel {
 	private String status;
 
 	@ManyToOne
-	@JsonBackReference
 	@JoinColumn(name = "subscription_id", referencedColumnName = "id")
+
 	private SubscriptionModel subscription;
 
 	@OneToMany(mappedBy = "user")
-	@JsonManagedReference
 	private List<InventoryModel> inventoryList;
 
 	@OneToMany

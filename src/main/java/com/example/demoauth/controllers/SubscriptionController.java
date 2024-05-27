@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demoauth.models.SubscriptionModel;
@@ -26,6 +27,13 @@ public class SubscriptionController {
     public List<SubscriptionModel> getAllSubscriptions() {
         return subscriptionService.getAllSubscriptions();
     }
+
+    // @CrossOrigin(origins = "http://localhost:3000")
+    // @GetMapping("/subscriptions")
+    // public SubscriptionModel getSubByUserId(@RequestParam Long userId) {
+
+    // return subscriptionService.getSubByUserId(userId);
+    // }
 
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/subscriptions")

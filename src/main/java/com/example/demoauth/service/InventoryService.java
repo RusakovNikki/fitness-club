@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import lombok.AllArgsConstructor;
+
+import com.example.demoauth.models.EStatuses;
 import com.example.demoauth.models.InventoryModel;
 import com.example.demoauth.models.UserModel;
 import com.example.demoauth.repository.InventoryRepository;
@@ -29,6 +31,7 @@ public class InventoryService {
         UserModel user = userRepository.findById(userId).orElse(null);
         if (user != null && inventory != null) {
             inventory.setUser(user);
+            inventory.setStatus(EStatuses.COME.toString());
             return inventoryRepository.save(inventory);
         }
         return null;
@@ -37,6 +40,7 @@ public class InventoryService {
     public InventoryModel removeUserFromInventory(Long inventoryId) {
         InventoryModel inventory = inventoryRepository.findById(inventoryId).orElseThrow();
         inventory.setUser(null);
+        inventory.setStatus(EStatuses.LEAVE.toString());
 
         return inventoryRepository.save(inventory);
     }

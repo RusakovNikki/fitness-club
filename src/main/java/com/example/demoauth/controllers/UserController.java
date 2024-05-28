@@ -36,8 +36,8 @@ public class UserController {
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
-    @GetMapping("/users/search/{name}")
-    public List<UserModel> getUsersByName(@PathVariable String name) {
+    @GetMapping("/users/search")
+    public List<UserModel> getUsersByName(@RequestParam(required = false) String name) {
         return userService.getUsersByName(name);
     }
 

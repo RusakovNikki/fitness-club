@@ -23,6 +23,9 @@ public class UserService {
     }
 
     public List<UserModel> getUsersByName(String name) {
+        if (name == null) {
+            return userRepository.findAll();
+        }
         return userRepository.findByUsernameContaining(name);
     }
 

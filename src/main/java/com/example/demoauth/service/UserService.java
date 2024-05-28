@@ -2,6 +2,7 @@ package com.example.demoauth.service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -22,8 +23,7 @@ public class UserService {
     }
 
     public List<UserModel> getUsersByName(String name) {
-        // return userRepository.findAllByName(name);
-        return null;
+        return userRepository.findByUsernameContaining(name);
     }
 
     public UserModel updateUserStatus(Long userId, String status) {

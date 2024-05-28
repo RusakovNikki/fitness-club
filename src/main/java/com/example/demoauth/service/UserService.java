@@ -7,6 +7,8 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import lombok.AllArgsConstructor;
+
+import com.example.demoauth.models.EStatuses;
 import com.example.demoauth.models.SubscriptionModel;
 import com.example.demoauth.models.UserModel;
 import com.example.demoauth.repository.SubscriptionRepository;
@@ -32,10 +34,10 @@ public class UserService {
     public UserModel updateUserStatus(Long userId, String status) {
         UserModel user = userRepository.findById(userId).orElseThrow();
 
-        if (status.equalsIgnoreCase("ENTER")) {
+        if (status.equalsIgnoreCase(EStatuses.COME.toString())) {
             user.setEnteredAt(LocalDateTime.now());
             user.setLeftAt(null);
-        } else if (status.equalsIgnoreCase("LEFT")) {
+        } else if (status.equalsIgnoreCase(EStatuses.LEAVE.toString())) {
             user.setEnteredAt(null);
             user.setLeftAt(LocalDateTime.now());
         }

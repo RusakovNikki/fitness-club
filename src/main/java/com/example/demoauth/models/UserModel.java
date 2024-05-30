@@ -74,15 +74,9 @@ public class UserModel {
 	@OneToMany(mappedBy = "user")
 	private List<InventoryModel> inventoryList;
 
-	@OneToMany
-	@JoinColumn(name = "user_id")
-	private List<TrainingModel> userTraining;
-
-	@OneToMany
-	@JoinColumn(name = "trainer_id")
-	private List<TrainingModel> trainerTraining;
-
-	//
+	@ManyToMany(mappedBy = "users")
+	@JsonIgnore
+	private Set<TrainingModel> trainings;
 
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))

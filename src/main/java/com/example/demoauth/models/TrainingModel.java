@@ -1,6 +1,7 @@
 package com.example.demoauth.models;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,8 +9,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
@@ -34,10 +39,9 @@ public class TrainingModel {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private UserModel user;
+    private UserModel trainer; // Тренер, связанный с тренировкой
 
-    @ManyToOne
-    @JoinColumn(name = "trainer_id", referencedColumnName = "id")
-    private UserModel trainer;
+    @ManyToMany
+    @JoinTable(name = "user_training", joinColumns = @JoinColumn(name = "training_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+    private Set<UserModel> users; // Ученики, участвующие в тренировке
 }

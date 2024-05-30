@@ -22,8 +22,8 @@ public class InventoryService {
         return inventoryRepository.findAll();
     }
 
-    public void createInventory(InventoryModel inventory) {
-        inventoryRepository.save(inventory);
+    public InventoryModel createInventory(InventoryModel inventory) {
+        return inventoryRepository.save(inventory);
     }
 
     public InventoryModel assignUserToInventory(Long inventoryId, Long userId) {

@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demoauth.models.ERole;
+import com.example.demoauth.models.RoleModel;
 import com.example.demoauth.models.UserModel;
 import com.example.demoauth.service.UserService;
 
@@ -61,5 +63,12 @@ public class UserController {
     public UserModel getUserById(@PathVariable Long userId) {
         return userService.getUserById(userId);
     }
+
+    // @CrossOrigin(origins = "http://localhost:3000")
+    // @GetMapping("/users/role")
+    // public List<UserModel> getUsersByRole(@RequestParam String role) {
+    // ERole eRole = ERole.valueOf(role);
+    // return userService.getUsersByRole(eRole);
+    // }
 
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.AllArgsConstructor;
@@ -40,8 +41,8 @@ public class TrainingController {
 
     @PostMapping("/trainings")
     @CrossOrigin(origins = "http://localhost:3000")
-    public TrainingModel createTraining(@RequestBody TrainingModel training) {
-        return trainingService.createTraining(training);
+    public TrainingModel createTraining(@RequestParam String trainingName, @RequestParam Long trainerId) {
+        return trainingService.createTraining(trainingName, trainerId);
     }
 
     @DeleteMapping("/trainings/{trainingId}")

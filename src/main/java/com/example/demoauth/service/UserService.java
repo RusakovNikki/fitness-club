@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import lombok.AllArgsConstructor;
 
+import com.example.demoauth.models.ERole;
 import com.example.demoauth.models.EStatuses;
 import com.example.demoauth.models.SubscriptionModel;
 import com.example.demoauth.models.UserModel;
@@ -62,5 +63,9 @@ public class UserService {
 
     public UserModel getUserById(Long userId) {
         return userRepository.findById(userId).orElse(null);
+    }
+
+    public List<UserModel> getUsersByRole(ERole role) {
+        return userRepository.findAllByRolesContaining(role);
     }
 }

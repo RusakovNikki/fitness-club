@@ -11,8 +11,10 @@ import lombok.AllArgsConstructor;
 import com.example.demoauth.models.ERole;
 import com.example.demoauth.models.EStatuses;
 import com.example.demoauth.models.SubscriptionModel;
+import com.example.demoauth.models.TrainingModel;
 import com.example.demoauth.models.UserModel;
 import com.example.demoauth.repository.SubscriptionRepository;
+import com.example.demoauth.repository.TrainingRepository;
 import com.example.demoauth.repository.UserRepository;
 
 @Service
@@ -20,6 +22,7 @@ import com.example.demoauth.repository.UserRepository;
 public class UserService {
     private UserRepository userRepository;
     private SubscriptionRepository subscriptionRepository;
+    private TrainingRepository trainingRepository;
 
     public List<UserModel> getUsers() {
         return userRepository.findAll();
@@ -68,4 +71,5 @@ public class UserService {
     public List<UserModel> getUsersByRole(ERole role) {
         return userRepository.findAllByRolesContaining(role);
     }
+
 }

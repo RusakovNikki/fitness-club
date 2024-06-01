@@ -50,4 +50,10 @@ public class TrainingController {
     public Boolean deleteTrainingById(@PathVariable Long trainingId) {
         return trainingService.deleteTrainingById(trainingId);
     }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PostMapping("/trainings/{trainingId}")
+    public TrainingModel joinUserToGroupTraining(@PathVariable Long trainingId, @RequestParam Long userId) {
+        return trainingService.joinUserToGroupTraining(userId, trainingId);
+    }
 }

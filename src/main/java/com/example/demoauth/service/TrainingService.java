@@ -43,4 +43,12 @@ public class TrainingService {
         return true;
     }
 
+    public TrainingModel joinUserToGroupTraining(Long userId, Long trainingId) {
+        UserModel user = userRepository.findById(userId).orElse(null);
+        TrainingModel training = trainingRepository.findById(trainingId).orElse(null);
+
+        training.getUsers().add(user);
+        return trainingRepository.save(training);
+    }
+
 }

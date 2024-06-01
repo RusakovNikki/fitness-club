@@ -52,4 +52,12 @@ public class TrainingService {
         return trainingRepository.save(training);
     }
 
+    public List<TrainingModel> getTrainingsByUserID(Long userId) {
+        UserModel user = userRepository.findById(userId).orElse(null);
+        List<TrainingModel> trainings = trainingRepository.findAll().stream()
+                .filter(training -> training.getUsers().contains(user)).toList();
+
+        return trainings;
+    }
+
 }

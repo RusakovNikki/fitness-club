@@ -56,4 +56,10 @@ public class TrainingController {
     public TrainingModel joinUserToGroupTraining(@PathVariable Long trainingId, @RequestParam Long userId) {
         return trainingService.joinUserToGroupTraining(userId, trainingId);
     }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/trainings/user/{userId}")
+    public List<TrainingModel> getTrainingsByUserID(@PathVariable Long userId) {
+        return trainingService.getTrainingsByUserID(userId);
+    }
 }

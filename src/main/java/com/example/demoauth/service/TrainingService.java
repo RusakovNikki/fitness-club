@@ -24,16 +24,17 @@ public class TrainingService {
 
     public List<TrainingModel> getGroupTrainings() {
         return trainingRepository.findAll().stream()
-                .filter(training -> training.getType().equals(ETrainings.GROUP.toString())).toList();
-
+                .filter(training -> training.getType() != null && training.getType().length() > 0
+                        && training.getType().equals(ETrainings.GROUP.toString()))
+                .toList();
     }
 
-    public TrainingModel createTraining(String trainingName, Long trainerId) {
-        TrainingModel training = new TrainingModel();
-        UserModel user = userRepository.findById(trainerId).orElse(null);
-        training.setName(trainingName);
-        training.setTrainer(user);
-        training.setType(ETrainings.GROUP.toString());
+    public TrainingModel createTraining(TrainingModel training) {
+        // TrainingModel training = new TrainingModel();
+        // UserModel user = userRepository.findById(trainerId).orElse(null);
+        // training.setName(trainingName);
+        // training.setTrainer(user);
+        // training.setType(ETrainings.GROUP.toString());
         return trainingRepository.save(training);
     }
 

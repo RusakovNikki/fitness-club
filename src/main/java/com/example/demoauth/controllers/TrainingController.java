@@ -41,8 +41,8 @@ public class TrainingController {
 
     @PostMapping("/trainings")
     @CrossOrigin(origins = "http://localhost:3000")
-    public TrainingModel createTraining(@RequestParam String trainingName, @RequestParam Long trainerId) {
-        return trainingService.createTraining(trainingName, trainerId);
+    public TrainingModel createTraining(@RequestBody TrainingModel training) {
+        return trainingService.createTraining(training);
     }
 
     @DeleteMapping("/trainings/{trainingId}")

@@ -62,4 +62,10 @@ public class TrainingController {
     public List<TrainingModel> getTrainingsByUserID(@PathVariable Long userId) {
         return trainingService.getTrainingsByUserID(userId);
     }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/trainings/trainer/{trainerId}")
+    public List<TrainingModel> getTrainingsByTrainerID(@PathVariable Long trainerId) {
+        return trainingService.getTrainingsByTrainerID(trainerId);
+    }
 }

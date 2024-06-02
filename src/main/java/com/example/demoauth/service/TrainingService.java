@@ -55,7 +55,15 @@ public class TrainingService {
     public List<TrainingModel> getTrainingsByUserID(Long userId) {
         UserModel user = userRepository.findById(userId).orElse(null);
         List<TrainingModel> trainings = trainingRepository.findAll().stream()
-                .filter(training -> training.getUsers().contains(user)).toList();
+                .filter(training -> training.getUsers() != null && training.getUsers().contains(user)).toList();
+
+        return trainings;
+    }
+
+    public List<TrainingModel> getTrainingsByTrainerID(Long trainerId) {
+        UserModel trainer = userRepository.findById(trainerId).orElse(null);
+        List<TrainingModel> trainings = trainingRepository.findAll().stream()
+                .filter(training -> training.getTrainer() != null && training.getTrainer().equals(trainer)).toList();
 
         return trainings;
     }

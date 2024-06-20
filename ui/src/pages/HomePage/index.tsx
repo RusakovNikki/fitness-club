@@ -156,7 +156,7 @@ const HomePage = () => {
             <Typography variant="h5" fontWeight="bold">
               Виды услуг и направления
             </Typography>
-            <Stack direction="row" gap="1rem" justifyContent="space-between">
+            <Stack direction="row" gap="1rem">
               <ServiceCard
                 image={buySubscriptionImage}
                 onCardClick={() => setOpenSubscriptionDialog(true)}
@@ -170,12 +170,12 @@ const HomePage = () => {
                 title="Групповые занятия"
                 subTitle="Тренировки с единомышленниками"
               />
-              <ServiceCard
+              {/* <ServiceCard
                 image={personalTrainingImage}
                 onCardClick={() => setOpenPersonalSessionDialog(true)}
                 title="Персональные тренировки"
                 subTitle="Станьте сильнее с нашими специалистами"
-              />
+              /> */}
             </Stack>
 
             <Typography variant="h5" fontWeight="bold">

@@ -1,9 +1,10 @@
 export interface BuildPath {
   entry: string;
-  html: string;
+  // html: string;
   output: string;
   src: string;
   public: string;
+  config: string;
 }
 
 export enum EEnvMode {

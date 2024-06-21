@@ -21,7 +21,7 @@ export const buildPlugins = ({
    * и при этом подключал автоматом скрипт
    */
   new HtmlWebpackPlugin({
-    template: paths.html,
+    template: path.resolve(paths.public, "index.html"),
     favicon: path.resolve(paths.public, "favicon.ico"),
   }),
   /**

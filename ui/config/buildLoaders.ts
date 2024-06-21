@@ -1,72 +1,35 @@
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import ReactRefreshTypeScript from "react-refresh-typescript";
-import { ModuleOptions } from "webpack";
-import { BuildOptions } from "./types";
-import path from "path";
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import ReactRefreshTypeScript from 'react-refresh-typescript';
+import { ModuleOptions } from 'webpack';
+import { BuildOptions } from './types';
+import path from 'path';
 
 export const buildLoaders = ({
   paths,
-}: BuildOptions): ModuleOptions["rules"] => [
-  // {
-  //   test: /\.(css|scss)$/i,
-  //   /**
-  //    * Чтобы внедрить css в js, используется css-loader, но не даёт возможность отобразить стили на странице
-  //    * Чтобы отобразить стили, используется style-loader, причём первым
-  //    * Чтобы отображать scss, нужен sass-loader
-  //    */
-  //   use: ["style-loader", "css-loader", "sass-loader"],
-  // },
+}: BuildOptions): ModuleOptions['rules'] => [
   {
     test: /\.(css|scss)$/i,
-    use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+    use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
   },
-  /**
-   * Обработка typescript
-   * Так же ts-loader умеет обрабатывать (j/t)sx
-   */
-  // {
-  //   test: /\.tsx?$/,
-  //   use: {
-  //     loader: "ts-loader",
-  //     /**
-  //      * Для HMR
-  //      * @see {@link https://www.npmjs.com/package/@pmmmwh/react-refresh-webpack-plugin}
-  //      */
-  //     options: {
-  //       getCustomTransformers: () => ({
-  //         before: [ReactRefreshTypeScript()],
-  //       }),
-  //       transpileOnly: true,
-  //     },
-  //   },
-  //   exclude: /node_modules/,
-  // },
   {
     test: /\.tsx?$/,
     exclude: /node_modules/,
     use: {
-      /**
-       * Транспиляция tsx, jsx в js
-       */
-      loader: "babel-loader",
+      loader: 'babel-loader',
       options: {
-        configFile: path.resolve(paths.config, "babel.config.json"),
+        configFile: path.resolve(paths.config, 'babel.config.json'),
       },
     },
   },
-  /**
-   * Используется чтобы была возможность
-   * импортировать изображения
-   */
   {
     test: /\.(png|jpg|jpeg|gif)$/i,
-    type: "asset/resource",
+    type: 'asset/resource',
   },
   {
     test: /\.svg$/,
     use: [
       {
-        loader: "@svgr/webpack",
+        loader: '@svgr/webpack',
         options: {
           icon: true,
         },

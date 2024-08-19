@@ -8,3 +8,15 @@ services:
       POSTGRES_DATABASE: fitness-club
     ports:
       - '5436:5432'
+  api:
+    build:
+      context: ./spring-jwt-realization
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+  ui:
+    build:
+        context: ./ui
+        dockerfile: Dockerfile
+    depends_on:
+      - db

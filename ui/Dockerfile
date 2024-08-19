@@ -2,11 +2,11 @@
 FROM node:18-alpine as ui-fitness-club
 
 # Build args
-ARG API
+ARG DOMEN
 ARG PORT
 
 # Environment vars
-ENV API=$API
+ENV DOMEN=$DOMEN
 ENV PORT=$PORT
 
 WORKDIR /var

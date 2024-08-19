@@ -2,6 +2,7 @@ import webpack, { Configuration } from "webpack";
 import { buildWebpack } from "./config/buildWebpack";
 import { EEnvMode } from "./config/types";
 import path from "path";
+import dotenv from "dotenv";
 
 export interface EnvVariables {
   mode?: EEnvMode;
@@ -9,6 +10,8 @@ export interface EnvVariables {
 }
 
 export default (env: EnvVariables) => {
+  dotenv.config({path: `.env`, override: true});
+  
   const config: Configuration = buildWebpack({
     mode: env.mode ?? EEnvMode.DEVELOPMENT,
     port: env.port ?? 3000,

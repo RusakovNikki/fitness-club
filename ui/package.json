@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prestart": "dotenv",
     "start": "webpack serve --open",
     "build:prod": "webpack --env mode=production",
     "build:dev": "webpack --env mode=development"
@@ -65,6 +66,7 @@
     "@types/jest": "^27.5.2",
     "bootstrap": "^5.3.3",
     "dayjs": "^1.11.11",
+    "dotenv": "^16.4.5",
     "loadash": "^1.0.0",
     "materialize-css": "^1.0.0-rc.2",
     "react": "^18.2.0",

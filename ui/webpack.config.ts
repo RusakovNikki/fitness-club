@@ -10,7 +10,9 @@ export interface EnvVariables {
 }
 
 export default (env: EnvVariables) => {
-  dotenv.config({path: `.env`, override: true});
+  dotenv.config({path: `.env`});
+
+  console.log(`API: `, process.env.API);
   
   const config: Configuration = buildWebpack({
     mode: env.mode ?? EEnvMode.DEVELOPMENT,

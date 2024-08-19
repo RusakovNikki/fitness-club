@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "prestart": "dotenv",
     "start": "webpack serve --open",
     "build:prod": "webpack --env mode=production",
     "build:dev": "webpack --env mode=development"

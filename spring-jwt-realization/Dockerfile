@@ -1,5 +1,9 @@
-# docker build -t fitness-club-spring-boot-api .
-# docker run -p 8084:8080 fitness-club-spring-boot-api
-FROM eclipse-temurin:17.0.12_7-jre-jammy
-COPY ./target/*.jar app.jar
-ENTRYPOINT [ "java", "-jar", "/app.jar" ]
+FROM maven:3.8.4-openjdk-17 as builder
+WORKDIR /app
+COPY . /app/.
+RUN mvn -f /app/pom.xml clean install -Dmaven.test.skip=true
+
+FROM eclipse-temurin:17-jre-alpine
+WORKDIR /app
+COPY --from=builder /app/target/*.jar /app/*.jar
+ENTRYPOINT ["java", "-jar", "/app/*.jar"]

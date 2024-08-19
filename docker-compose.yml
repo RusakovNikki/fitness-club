@@ -12,11 +12,23 @@ services:
     build:
       context: ./spring-jwt-realization
       dockerfile: Dockerfile
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: fitness-club
+      DB_USER: fitness-club
+      DB_PASSWORD: fitness-club
+    ports:
+      - 8080:8080
     depends_on:
       - db
   ui:
     build:
         context: ./ui
         dockerfile: Dockerfile
+        args:
+          API: http://api:8080
+    ports:
+      - 80:80
     depends_on:
-      - db
+      - api

@@ -1,11 +1,16 @@
 spring:
   application:
     name: fitness-club
+  # datasource:
+  #   driver-class-name: org.postgresql.Driver
+  #   url: jdbc:postgresql://localhost:5436/fitness-club
+  #   username: fitness-club
+  #   password: fitness-club
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5436/fitness-club
-    username: fitness-club
-    password: fitness-club
+    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: update

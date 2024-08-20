@@ -1,14 +1,5 @@
 # docker build -t fitness-club-react-ui .
 FROM node:18-alpine as ui-fitness-club
-
-# Build args
-ARG DOMEN
-ARG PORT
-
-# Environment vars
-ENV DOMEN=$DOMEN
-ENV PORT=$PORT
-
 WORKDIR /var
 COPY . .
 RUN npm ci && npm run build:prod;

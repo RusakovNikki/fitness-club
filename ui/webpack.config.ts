@@ -12,8 +12,8 @@ export interface EnvVariables {
 export default (env: EnvVariables) => {
   dotenv.config({path: `.env`});
 
-  console.log(`DOMEN: `, process.env.DOMEN);
-  console.log(`PORT: `, process.env.PORT);
+  console.log(`MODE: `, process.env.MODE);
+  console.log(`API: `, process.env.API ? process.env.API : "localhost");
   
   const config: Configuration = buildWebpack({
     mode: env.mode ?? EEnvMode.DEVELOPMENT,

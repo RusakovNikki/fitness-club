@@ -8,6 +8,6 @@ export const commonApi = createApi({
     'updateInventory',
     'updateTrainings',
   ],
-  baseQuery: fetchBaseQuery({ baseUrl: `http://${process.env.DOMEN ?? "localhost"}:${process.env.PORT ?? "8080" }/api/`}),
+  baseQuery: fetchBaseQuery({ baseUrl: process.env.MODE === "production" ? "http://localhost/api/" : `${process.env.API}/api/`}),
   endpoints: () => ({}),
 });

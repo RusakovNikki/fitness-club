@@ -19,15 +19,13 @@ services:
       DB_USER: fitness-club
       DB_PASSWORD: fitness-club
     ports:
-      - 8080:8080
+      - 8090:8080
     depends_on:
       - db
   ui:
     build:
-        context: ./ui
-        dockerfile: Dockerfile
-        args:
-          API: http://api:8080
+      context: ./ui
+      dockerfile: Dockerfile
     ports:
       - 80:80
     depends_on:

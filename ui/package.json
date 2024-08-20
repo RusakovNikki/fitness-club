@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "start": "webpack serve --open",
-    "build:prod": "webpack --env mode=production",
-    "build:dev": "webpack --env mode=development"
+    "build:prod": "cross-env MODE=production webpack",
+    "build:dev": "cross-env MODE=development webpack"
   },
   "eslintConfig": {
     "extends": [
